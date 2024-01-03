@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eebae3ec45477c14682f3b3f9e8757a1, type: 3}
+  m_Name: Freeze time effect
+  m_EditorClassIdentifier: 
+  freezeTimePrefab: {fileID: 1742455555344552374, guid: 7baad2bf97bce18469373c8576f17ae1, type: 3}
