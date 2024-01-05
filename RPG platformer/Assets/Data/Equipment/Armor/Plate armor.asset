@@ -17,11 +17,12 @@ MonoBehaviour:
   icon: {fileID: -1581127718, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
   dropChance: 23.1
   equipmentType: 1
+  itemCooldown: 0
   itemEffects: []
-  strength: 0
+  strength: 1
   agility: 0
   intelligence: 0
-  vitality: 0
+  vitality: 2
   damage: 0
   critChance: 0
   critPower: 0
