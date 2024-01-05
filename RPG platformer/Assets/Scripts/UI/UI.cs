@@ -8,11 +8,8 @@ public class UI : MonoBehaviour
     [SerializeField] public GameObject characterUI;
 
     public UI_ItemTooltip itemToolTip;
+    public UI_StatTooltip statToolTip;
 
-    //void Start()
-    //{
-    //    itemToolTip = GetComponentInChildren<UI_ItemTooltip>();
-    //}
 
     // Update is called once per frame
     void Update()
