@@ -61,6 +61,7 @@ public class Inventory : MonoBehaviour
         stashItemSlot = stashSlotParent.GetComponentsInChildren<UI_ItemSlot>();
         equipmentSlot = equpmentSlotParent.GetComponentsInChildren<UI_EquipmentSlot>();
         statSlot = statSlotParent.GetComponentsInChildren<UI_StatSlot>();
+
         AddStartingItems();
     }
 
@@ -68,7 +69,8 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < startingItems.Count; i++)
         {
-            AddItem(startingItems[i]);
+            if (startingItems != null)
+                AddItem(startingItems[i]);
         }
     }
 
@@ -152,11 +154,11 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(ItemData _item)
     {
-
-        if (_item.itemType == ItemType.Equipment || CanAddItem())
-            AddToInventory(_item);
-        else if (_item.itemType == ItemType.Material)
+        if (_item.itemType == ItemType.Material)
             AddToStash(_item);
+        else if (_item.itemType == ItemType.Equipment || CanAddItem())
+            AddToInventory(_item);
+
 
 
 
@@ -171,9 +173,12 @@ public class Inventory : MonoBehaviour
         }
         else
         {
+
             InventoryItem newItem = new InventoryItem(_item);
             stash.Add(newItem);
             stashDictianory.Add(_item, newItem);
+            Debug.Log("ADD " + newItem);
+
         }
     }
 

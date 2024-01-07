@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e68041d7a6664343b78658217edc566, type: 3}
-  m_Name: Animal skinMaterial
+  m_Name: Fire Shard
   m_EditorClassIdentifier: 
   itemType: 0
-  itemName: Animal skin
-  icon: {fileID: -973012730, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
-  dropChance: 60.4
+  itemName: Fire Shard
+  icon: {fileID: -191816445, guid: be55291aae08d434db3da3b59db3ab4a, type: 3}
+  dropChance: 10.6
