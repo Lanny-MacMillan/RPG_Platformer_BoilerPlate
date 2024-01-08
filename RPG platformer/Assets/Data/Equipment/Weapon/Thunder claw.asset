@@ -20,6 +20,7 @@ MonoBehaviour:
   itemCooldown: 0
   itemEffects:
   - {fileID: 11400000, guid: 96d164f1d9cffae45ba8731e7346df8c, type: 2}
+  itemEffectDescription: 'Unique: Thunderstrike on 3rd hit'
   strength: 0
   agility: 0
   intelligence: 0
