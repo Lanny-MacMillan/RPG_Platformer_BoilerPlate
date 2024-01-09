@@ -36038,6 +36038,7 @@ GameObject:
   - component: {fileID: 1954985850}
   - component: {fileID: 1954985851}
   - component: {fileID: 1954985852}
+  - component: {fileID: 1954985853}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -36058,11 +36059,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 1
-  dashUnlocked: 0
   dashUnlockButton: {fileID: 901349706}
-  cloneOnDashUnlocked: 0
   cloneOnDashUnlockButton: {fileID: 1697267592}
-  cloneOnArrivalUnlocked: 0
   cloneOnArrivalUnlockedButton: {fileID: 2140792441}
 --- !u!114 &1954985847
 MonoBehaviour:
@@ -36109,7 +36107,6 @@ MonoBehaviour:
   canAttack: 0
   creatCloneOnDashStart: 0
   createCloneOnDashOver: 0
-  canCreateCloneOnCounterAttack: 0
   canDuplicateClone: 0
   chanceToDuplicate: 0
   crystalInseadOfClone: 0
@@ -36180,10 +36177,15 @@ MonoBehaviour:
   cooldown: 0
   crystalDuration: 1.5
   crystalPrefab: {fileID: 4017398500736977651, guid: dc0a3fa34257af146a6a54bbdfdf5719, type: 3}
+  unlockCloneInsteadButton: {fileID: 1379985817}
   cloneInsteadOfCrystal: 0
+  unlockCrystalButton: {fileID: 815702224}
+  unlockExplosiveButton: {fileID: 219132927}
   canExplode: 0
+  unlockMovingCrystal: {fileID: 796865636}
   canMoveToEnemy: 0
   moveSpeed: 4
+  unlockMultiStackButton: {fileID: 1218876707}
   canUseMultiStacks: 0
   amountOfStacks: 3
   multiStackCooldown: 4
@@ -36192,6 +36194,23 @@ MonoBehaviour:
   - {fileID: 4017398500736977651, guid: dc0a3fa34257af146a6a54bbdfdf5719, type: 3}
   - {fileID: 4017398500736977651, guid: dc0a3fa34257af146a6a54bbdfdf5719, type: 3}
   - {fileID: 4017398500736977651, guid: dc0a3fa34257af146a6a54bbdfdf5719, type: 3}
+--- !u!114 &1954985853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954985845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fd1708ca89747968a4374fbcd8fef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  parryUnlockButton: {fileID: 1874421977}
+  parryRestoreUnlockButton: {fileID: 2129350710}
+  restoreHealthPercentage: 0.2
+  parryMirageUnlockButton: {fileID: 82113046}
 --- !u!1 &1961722134
 GameObject:
   m_ObjectHideFlags: 0
