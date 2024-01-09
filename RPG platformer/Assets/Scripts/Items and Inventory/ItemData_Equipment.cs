@@ -147,6 +147,7 @@ public class ItemData_Equipment : ItemData
         sb.AppendLine();
         sb.Append("");
 
+        // set color here for Unique effect
         if (itemEffectDescription.Length > 0)
         {
             sb.AppendLine();

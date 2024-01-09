@@ -143,11 +143,14 @@ public class Player : Entity
 
     public void AnimationTrigger() => stateMachine.currentState.AnimationFinishTrigger();
 
+
     private void CheckForDashInput()
     {
         if (IsWallDetected())
             return;
 
+        if (skill.dash.dashUnlocked == false)
+            return;
 
 
 

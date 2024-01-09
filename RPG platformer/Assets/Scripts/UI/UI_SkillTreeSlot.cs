@@ -9,7 +9,9 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     private UI ui;
 
+    [SerializeField] private Image skillImage;
     [SerializeField] private string skillName;
+    [SerializeField] private int skillPrice;
 
     [TextArea]
     [SerializeField] private string skillDescription;
@@ -23,11 +25,15 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
     // will drag and drop what needs to be locked in the inpector panel. Example on Skill 4-6 if activated it will lock off the other ability
     [SerializeField] private UI_SkillTreeSlot[] shouldBeLocked;
 
-    [SerializeField] private Image skillImage;
 
     private void OnValidate()
     {
         gameObject.name = "SkillTreeSlot_UI - " + skillName;
+    }
+
+    private void Awake()
+    {
+        GetComponent<Button>().onClick.AddListener(() => UnlockSkillSlot());
     }
 
     // Start is called before the first frame update
@@ -36,17 +42,21 @@ public class UI_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
         skillImage = GetComponent<Image>();
         ui = GetComponentInParent<UI>();
         skillImage.color = lockedSkillColor;
-
-        GetComponent<Button>().onClick.AddListener(() => UnlockSkillSlot());
     }
 
     public void UnlockSkillSlot()
     {
+        if (!PlayerManager.instance.HaveEnoughCurrency(skillPrice))
+            return;
+
+
+        Debug.Log("Slot Unlocked");
+
         for(int i =0; i < shouldBeUnlocked.Length; i++)
         {
             if (shouldBeUnlocked[i].unlocked == false)
             {
-                Debug.Log("Can Unlock SKill");
+                Debug.Log("Can not Unlock Skill");
                 return;
             }
         }
