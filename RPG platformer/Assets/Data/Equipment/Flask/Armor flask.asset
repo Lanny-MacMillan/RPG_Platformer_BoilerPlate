@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Armor flask
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: Armor flask
+  itemName: Armor Flask
   icon: {fileID: -165920498, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
   dropChance: 0
   equipmentType: 3
@@ -35,4 +35,6 @@ MonoBehaviour:
   fireDamage: 0
   iceDamage: 0
   lightingDamage: 0
-  craftingMaterials: []
+  craftingMaterials:
+  - data: {fileID: 11400000, guid: b1342fd16e2c376479833731e2df12f3, type: 2}
+    stackSize: 1

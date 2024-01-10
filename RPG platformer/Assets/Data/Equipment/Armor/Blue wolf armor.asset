@@ -20,10 +20,11 @@ MonoBehaviour:
   itemCooldown: 5
   itemEffects:
   - {fileID: 11400000, guid: 9911a097d6d288742b87f26ccb443844, type: 2}
-  strength: 4
+  itemEffectDescription: 'Unique: When struck, freeze enemy for 2 seconds'
+  strength: 5
   agility: 0
-  intelligence: 0
-  vitality: 0
+  intelligence: 15
+  vitality: 10
   damage: 0
   critChance: 0
   critPower: 0

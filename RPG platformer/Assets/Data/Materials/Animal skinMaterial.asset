@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Animal skinMaterial
   m_EditorClassIdentifier: 
   itemType: 0
-  itemName: Animal skinf
+  itemName: Animal skin
   icon: {fileID: -973012730, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
   dropChance: 60.4

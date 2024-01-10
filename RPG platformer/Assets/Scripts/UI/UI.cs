@@ -4,16 +4,45 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] public GameObject characterUI;
+    [SerializeField] public GameObject skillTreeUI;
+    [SerializeField] public GameObject craftingUI;
+    [SerializeField] public GameObject optionsUI;
+
+    public UI_SkillTooltip skillToolTip;
+    public UI_ItemTooltip itemToolTip;
+    public UI_StatTooltip statToolTip;
+    public UI_CraftWindow craftWindow;
+
+    private void Awake()
     {
-        
+        // bug fix, assigns events on skill tree slot before we assign events on skill scripts
+        SwitchTo(skillTreeUI);
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        SwitchTo(null);
+
+        itemToolTip.gameObject.SetActive(false);
+        statToolTip.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+            SwitchWithKeyTo(characterUI);
+
+        if (Input.GetKeyDown(KeyCode.B))
+            SwitchWithKeyTo(craftingUI);
+
+        if (Input.GetKeyDown(KeyCode.K))
+            SwitchWithKeyTo(skillTreeUI);
+
+        if (Input.GetKeyDown(KeyCode.O))
+            SwitchWithKeyTo(optionsUI);
+
     }
 
     public void SwitchTo(GameObject _menu)
@@ -27,5 +56,16 @@ public class UI : MonoBehaviour
         // switch on the one we need
         if (_menu != null)
             _menu.SetActive(true);
+    }
+
+    public void SwitchWithKeyTo(GameObject _menu)
+    {
+        if( _menu != null && _menu.activeSelf)
+        {
+            _menu.SetActive(false);
+            return;
+        }
+
+        SwitchTo(_menu);
     }
 }

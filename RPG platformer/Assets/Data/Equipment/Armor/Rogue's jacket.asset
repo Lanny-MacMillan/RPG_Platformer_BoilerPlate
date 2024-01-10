@@ -20,16 +20,17 @@ MonoBehaviour:
   itemCooldown: 0
   itemEffects:
   - {fileID: 11400000, guid: f2ed38bf0122c0b4799db24b44d43f69, type: 2}
-  strength: 0
+  itemEffectDescription: 'Unique : Increased evasion '
+  strength: 3
   agility: 5
   intelligence: 0
-  vitality: 0
-  damage: 0
-  critChance: 0
-  critPower: 0
+  vitality: 5
+  damage: 3
+  critChance: 10
+  critPower: 30
   health: 50
   armor: 0
-  evasion: 5
+  evasion: 25
   magicResistance: 0
   fireDamage: 0
   iceDamage: 0

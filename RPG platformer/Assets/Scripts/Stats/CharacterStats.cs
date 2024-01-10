@@ -1,5 +1,25 @@
 using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+
+
+public enum StatType
+{
+    strength,
+    agility,
+    intelegence,
+    vitality,
+    damage,
+    critChance,
+    critPower,
+    health,
+    armor,
+    evasion,
+    magicRes,
+    fireDamage,
+    iceDamage,
+    lightingDamage
+}
 
 public class CharacterStats : MonoBehaviour
 {
@@ -48,6 +68,7 @@ public class CharacterStats : MonoBehaviour
 
     public System.Action onHealthChanged;
     public bool isDead { get; private set; }
+    private bool isVunerable;
 
     protected virtual void Start()
     {
@@ -77,6 +98,17 @@ public class CharacterStats : MonoBehaviour
 
         if(isIgnited)
             ApplyIgniteDamage();
+    }
+
+    public void MakeVunerableFor(float _duration) => StartCoroutine(VunerableCoroutine(_duration));
+
+    private IEnumerator VunerableCoroutine(float _duration)
+    {
+        isVunerable = true;
+
+        yield return new WaitForSeconds(_duration);
+
+        isVunerable = false;
     }
 
     public virtual void IncreaseStatBy(int _modifier, float _duration, Stat _statToModify)
@@ -314,6 +346,9 @@ public class CharacterStats : MonoBehaviour
 
     protected virtual void DecreaseHealthBy(int _damage)
     {
+        if (isVunerable) // increased damage by 110%
+            _damage = Mathf.RoundToInt(_damage * 1.1f);
+
         currentHealth -= _damage;
 
         if (onHealthChanged != null)
@@ -327,7 +362,7 @@ public class CharacterStats : MonoBehaviour
 
 
     #region Stat calculations
-    private int CheckTargetArmor(CharacterStats _targetStats, int totalDamage)
+    protected int CheckTargetArmor(CharacterStats _targetStats, int totalDamage)
     {
         if (_targetStats.isChilled)
             totalDamage -= Mathf.RoundToInt(_targetStats.armor.GetValue() * .8f);
@@ -347,7 +382,13 @@ public class CharacterStats : MonoBehaviour
         return totalMagicalDamage;
     }
 
-    private bool TargetCanAvoidAttack(CharacterStats _targetStats)
+
+    public virtual void OnEvasion()
+    {
+
+    }
+
+    protected bool TargetCanAvoidAttack(CharacterStats _targetStats)
     {
         int totalEvasion = _targetStats.evasion.GetValue() + _targetStats.agility.GetValue();
 
@@ -356,13 +397,14 @@ public class CharacterStats : MonoBehaviour
 
         if (Random.Range(0, 100) < totalEvasion)
         {
+            _targetStats.OnEvasion();
             return true;
         }
 
         return false;
     }
 
-    private bool CanCrit()
+    protected bool CanCrit()
     {
         int totalCriticalChance = critChance.GetValue() + agility.GetValue();
 
@@ -375,7 +417,7 @@ public class CharacterStats : MonoBehaviour
         return false;
     }
 
-    private int CalculateCriticalDamage(int _damage)
+    protected int CalculateCriticalDamage(int _damage)
     {
         float totalCritPower = (critPower.GetValue() + strength.GetValue()) * .01f;
         float critDamage = _damage * totalCritPower;
@@ -389,4 +431,24 @@ public class CharacterStats : MonoBehaviour
     }
 
     #endregion
+
+    public Stat GetStat(StatType statType)
+    {
+        if (statType == StatType.strength) return strength;
+        else if (statType == StatType.agility) return agility;
+        else if (statType == StatType.intelegence) return intelligence;
+        else if (statType == StatType.vitality) return vitality;
+        else if (statType == StatType.damage) return damage;
+        else if (statType == StatType.critChance) return critChance;
+        else if (statType == StatType.critPower) return critPower;
+        else if (statType == StatType.health) return maxHealth;
+        else if (statType == StatType.armor) return armor;
+        else if (statType == StatType.evasion) return evasion;
+        else if (statType == StatType.magicRes) return magicResistance;
+        else if (statType == StatType.fireDamage) return fireDamage;
+        else if (statType == StatType.iceDamage) return iceDamage;
+        else if (statType == StatType.lightingDamage) return lightingDamage;
+
+        return null;
+    }
 }

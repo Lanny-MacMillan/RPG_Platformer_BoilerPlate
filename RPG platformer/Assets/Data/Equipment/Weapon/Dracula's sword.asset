@@ -17,21 +17,28 @@ MonoBehaviour:
   icon: {fileID: -1944902997, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
   dropChance: 10.9
   equipmentType: 0
+  itemCooldown: 0
   itemEffects:
   - {fileID: 11400000, guid: 6c856b30363c5aa4a9b61061df07fd57, type: 2}
   - {fileID: 11400000, guid: 96d164f1d9cffae45ba8731e7346df8c, type: 2}
-  strength: 0
-  agility: 0
+  itemEffectDescription: 'Unique: Heal for 10% of max hp on hit. Thunderstrike on
+    3rd hit'
+  strength: 15
+  agility: 5
   intelligence: 0
-  vitality: 0
+  vitality: 15
   damage: 15
   critChance: 15
   critPower: 0
-  health: 0
-  armor: 0
+  health: 35
+  armor: 10
   evasion: 0
   magicResistance: 25
   fireDamage: 0
   iceDamage: 0
   lightingDamage: 0
-  craftingMaterials: []
+  craftingMaterials:
+  - data: {fileID: 11400000, guid: 6835c34bd80fc9c468d2f549f4b6220a, type: 2}
+    stackSize: 1
+  - data: {fileID: 11400000, guid: b1342fd16e2c376479833731e2df12f3, type: 2}
+    stackSize: 1
