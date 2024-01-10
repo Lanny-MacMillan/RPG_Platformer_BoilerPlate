@@ -68,6 +68,7 @@ public class CharacterStats : MonoBehaviour
 
     public System.Action onHealthChanged;
     public bool isDead { get; private set; }
+    private bool isVunerable;
 
     protected virtual void Start()
     {
@@ -97,6 +98,17 @@ public class CharacterStats : MonoBehaviour
 
         if(isIgnited)
             ApplyIgniteDamage();
+    }
+
+    public void MakeVunerableFor(float _duration) => StartCoroutine(VunerableCoroutine(_duration));
+
+    private IEnumerator VunerableCoroutine(float _duration)
+    {
+        isVunerable = true;
+
+        yield return new WaitForSeconds(_duration);
+
+        isVunerable = false;
     }
 
     public virtual void IncreaseStatBy(int _modifier, float _duration, Stat _statToModify)
@@ -334,6 +346,9 @@ public class CharacterStats : MonoBehaviour
 
     protected virtual void DecreaseHealthBy(int _damage)
     {
+        if (isVunerable) // increased damage by 110%
+            _damage = Mathf.RoundToInt(_damage * 1.1f);
+
         currentHealth -= _damage;
 
         if (onHealthChanged != null)

@@ -25,7 +25,7 @@ public class PlayerGroundedState : PlayerState
         if (Input.GetKeyDown(KeyCode.R))
             stateMachine.ChangeState(player.blackHole);
 
-        if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword())
+        if (Input.GetKeyDown(KeyCode.Mouse1) && HasNoSword() && player.skill.sword.swordUnlocked)
             stateMachine.ChangeState(player.aimSowrd);
 
         if (Input.GetKeyDown(KeyCode.Q) && player.skill.parry.parryUnlocked)
