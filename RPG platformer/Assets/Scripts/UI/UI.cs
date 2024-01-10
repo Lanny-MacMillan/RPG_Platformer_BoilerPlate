@@ -15,6 +15,11 @@ public class UI : MonoBehaviour
     public UI_StatTooltip statToolTip;
     public UI_CraftWindow craftWindow;
 
+    private void Awake()
+    {
+        // bug fix, assigns events on skill tree slot before we assign events on skill scripts
+        SwitchTo(skillTreeUI);
+    }
 
     void Start()
     {
