@@ -19700,13 +19700,13 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   maxHealth:
-    baseValue: 100
+    baseValue: 10
     modifiers: 
   armor:
     baseValue: 50
     modifiers: 
   evasion:
-    baseValue: 0
+    baseValue: 10
     modifiers: 
   magicResistance:
     baseValue: 1
@@ -36039,6 +36039,7 @@ GameObject:
   - component: {fileID: 1954985851}
   - component: {fileID: 1954985852}
   - component: {fileID: 1954985853}
+  - component: {fileID: 1954985854}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -36177,9 +36178,8 @@ MonoBehaviour:
   cooldown: 0
   crystalDuration: 1.5
   crystalPrefab: {fileID: 4017398500736977651, guid: dc0a3fa34257af146a6a54bbdfdf5719, type: 3}
-  unlockCloneInsteadButton: {fileID: 1379985817}
-  cloneInsteadOfCrystal: 0
   unlockCrystalButton: {fileID: 815702224}
+  crystalUnlocked: 0
   unlockExplosiveButton: {fileID: 219132927}
   canExplode: 0
   unlockMovingCrystal: {fileID: 796865636}
@@ -36194,6 +36194,8 @@ MonoBehaviour:
   - {fileID: 4017398500736977651, guid: dc0a3fa34257af146a6a54bbdfdf5719, type: 3}
   - {fileID: 4017398500736977651, guid: dc0a3fa34257af146a6a54bbdfdf5719, type: 3}
   - {fileID: 4017398500736977651, guid: dc0a3fa34257af146a6a54bbdfdf5719, type: 3}
+  unlockCloneInsteadButton: {fileID: 1180857179}
+  cloneInsteadOfCrystal: 0
 --- !u!114 &1954985853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36211,6 +36213,24 @@ MonoBehaviour:
   parryRestoreUnlockButton: {fileID: 2129350710}
   restoreHealthPercentage: 0.2
   parryMirageUnlockButton: {fileID: 82113046}
+--- !u!114 &1954985854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954985845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2a8bc1959774565aa21924af62e3c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  unlockDodgeButton: {fileID: 1197122980}
+  evasionPercentage: 90
+  dodgeUnlocked: 0
+  unlockMirageDodgeButton: {fileID: 665691321}
+  dodgeMirageUnlocked: 0
 --- !u!1 &1961722134
 GameObject:
   m_ObjectHideFlags: 0
