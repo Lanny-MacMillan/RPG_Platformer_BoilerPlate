@@ -12626,7 +12626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillImage: {fileID: 0}
   skillName: Dash
-  skillPrice: 100
+  skillPrice: 0
   skillDescription: You can dash to avoid attacks
   lockedSkillColor: {r: 0.38679248, g: 0.36307406, b: 0.36307406, a: 0.7607843}
   unlocked: 0
@@ -35976,7 +35976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillImage: {fileID: 0}
   skillName: Dash Mirage
-  skillPrice: 300
+  skillPrice: 0
   skillDescription: You can dash to avoid attacks, leaving a mirage behind
   lockedSkillColor: {r: 0.38679248, g: 0.36307406, b: 0.36307406, a: 0.7607843}
   unlocked: 0
@@ -41465,6 +41465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: player.macDev
+  encryptData: 1
 --- !u!4 &2020595162
 Transform:
   m_ObjectHideFlags: 0
@@ -43178,7 +43179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillImage: {fileID: 0}
   skillName: Dash Double Mirage
-  skillPrice: 500
+  skillPrice: 0
   skillDescription: You can dash to avoid attacks, leave a mirage behind and leave
     a mirage on arrival
   lockedSkillColor: {r: 0.38679248, g: 0.36307406, b: 0.36307406, a: 0.7607843}
