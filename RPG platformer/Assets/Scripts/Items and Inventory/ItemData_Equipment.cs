@@ -19,8 +19,7 @@ public class ItemData_Equipment : ItemData
     [Header("Unique Effects")]
     public float itemCooldown;
     public ItemEffect[] itemEffects;
-    [TextArea]
-    public string itemEffectDescription;
+
     
     [Header("Major stats")]
     public int strength;
@@ -133,6 +132,19 @@ public class ItemData_Equipment : ItemData
         AddItemDescription(iceDamage, "Ice Damage");
         AddItemDescription(lightingDamage, "Lightning Damage");
 
+
+        for(int i = 0; i < itemEffects.Length; i++)
+        {
+            if (itemEffects[i].effectDescription.Length > 0)
+            {
+                sb.AppendLine();
+                sb.Append("");
+                sb.AppendLine();
+                sb.Append("Unique: " + itemEffects[i].effectDescription);
+                descriptionLength++;
+            }
+        }
+
         // this just prevents the tooltip from being smaller than 5 lines
         if(descriptionLength < 5)
         {
@@ -144,15 +156,10 @@ public class ItemData_Equipment : ItemData
 
         }
 
-        sb.AppendLine();
-        sb.Append("");
+        //sb.AppendLine();
+        //sb.Append("");
 
-        // set color here for Unique effect
-        if (itemEffectDescription.Length > 0)
-        {
-            sb.AppendLine();
-            sb.Append(itemEffectDescription);
-        }
+
 
         return sb.ToString();
     }
