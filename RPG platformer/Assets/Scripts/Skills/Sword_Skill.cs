@@ -121,15 +121,6 @@ public class Sword_Skill : Skill
     }
 
     #region Unlock Region
-    protected override void CheckUnlock()
-    {
-        UnlockSword();
-        UnlockBounceSword();
-        UnlockSpinSword();
-        UnlockPierceword();
-        UnlockTimeStop();
-        UnlockVunerable();
-    }
 
     private void UnlockSword()
     {
