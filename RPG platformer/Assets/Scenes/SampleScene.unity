@@ -35347,6 +35347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: data.macdev
+  encryptData: 1
 --- !u!4 &1671577531
 Transform:
   m_ObjectHideFlags: 0
