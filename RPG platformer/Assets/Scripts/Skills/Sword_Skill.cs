@@ -122,6 +122,17 @@ public class Sword_Skill : Skill
 
     #region Unlock Region
 
+    // if talent is unlocked in save game file this function will unlock talents
+    protected override void CheckUnlock()
+    {
+        UnlockSword();
+        UnlockBounceSword();
+        UnlockPierceword();
+        UnlockSpinSword();
+        UnlockTimeStop();
+        UnlockVunerable();
+    }
+
     private void UnlockSword()
     {
         if (swordUnlockButton.unlocked)

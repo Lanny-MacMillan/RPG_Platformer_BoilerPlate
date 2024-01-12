@@ -76,4 +76,12 @@ public class Blackhole_Skill : Skill
     {
         return maxSize / 2;
     }
+
+    // if talent is unlocked in save game file this function will unlock talents
+    protected override void CheckUnlock()
+    {
+        base.CheckUnlock();
+
+        UnlockBlackhole();
+    }
 }

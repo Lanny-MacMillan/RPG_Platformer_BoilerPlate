@@ -21,6 +21,13 @@ public class Dodge_Skill : Skill
         unlockMirageDodgeButton.GetComponent<Button>().onClick.AddListener(UnlockMirageDodge);
     }
 
+    // if talent is unlocked in save game file this function will unlock talents
+    protected override void CheckUnlock()
+    {
+        UnlockDodge();
+        UnlockMirageDodge();
+    }
+
     private void UnlockDodge()
     {
         if (unlockDodgeButton.unlocked && !dodgeUnlocked)

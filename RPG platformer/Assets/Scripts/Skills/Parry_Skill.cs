@@ -44,6 +44,14 @@ public class Parry_Skill : Skill
         parryMirageUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockParryMirage);
     }
 
+    // if talent is unlocked in save game file this function will unlock talents
+    protected override void CheckUnlock()
+    {
+        UnlockParry();
+        UnlockParryRestore();
+        UnlockParryMirage();
+    }
+
     private void UnlockParry()
     {
         if (parryUnlockButton.unlocked)

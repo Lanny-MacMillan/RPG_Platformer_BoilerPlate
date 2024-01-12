@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, ISaveManager
 {
     public static Inventory instance;
 
@@ -38,6 +39,10 @@ public class Inventory : MonoBehaviour
     public float flaskCooldown { get; private set; }
     private float armorCooldown;
 
+    [Header("Database")]
+    public List<InventoryItem> loadedItems;
+    public List<ItemData_Equipment> loadedEquipment;
+
     private void Awake()
     {
         if (instance == null)
@@ -67,8 +72,32 @@ public class Inventory : MonoBehaviour
 
     private void AddStartingItems()
     {
+        // add equipment items
+        foreach(ItemData_Equipment item in loadedEquipment)
+        {
+            EquipItem(item);
+        }
+
+        // add loadedItems over starting items
+        if (loadedItems.Count > 0)
+        {
+            foreach (InventoryItem item in loadedItems)
+            {
+                for (int i = 0; i < item.stackSize; i++)
+                {
+                    Debug.Log("Loading loaded items");
+
+                    AddItem(item.data);
+                }
+            }
+
+            return;
+        }
+
+        // add starting items
         for (int i = 0; i < startingItems.Count; i++)
         {
+            Debug.Log("Loading starting items");
             if (startingItems != null)
                 AddItem(startingItems[i]);
         }
@@ -182,8 +211,6 @@ public class Inventory : MonoBehaviour
             InventoryItem newItem = new InventoryItem(_item);
             stash.Add(newItem);
             stashDictianory.Add(_item, newItem);
-            Debug.Log("ADD " + newItem);
-
         }
     }
 
@@ -328,5 +355,77 @@ public class Inventory : MonoBehaviour
 
         Debug.Log("Armor on cooldown");
         return false;
+    }
+
+    public void LoadData(GameData _data)
+    {
+
+        // Load Inventory data
+        foreach(KeyValuePair<string, int> pair in _data.inventory)
+        {
+            foreach(var item in GetItemDatabase())
+            {
+                if(item != null && item.itemID == pair.Key)
+                {
+                    InventoryItem itemToLoad = new InventoryItem(item);
+                    itemToLoad.stackSize = pair.Value;
+
+                    loadedItems.Add(itemToLoad);
+                }
+            }
+        }
+
+        // Load Equipment data
+        foreach(string loadedItemId in _data.equipmentId)
+        {
+            foreach(var item in GetItemDatabase())
+            {
+                if(item != null && loadedItemId == item.itemID)
+                {
+                    loadedEquipment.Add(item as ItemData_Equipment);
+                }
+            }
+        }
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.inventory.Clear();
+        _data.equipmentId.Clear();
+
+        // save inventory data
+        foreach(KeyValuePair<ItemData, InventoryItem> pair in inventoryDictianory)
+        {
+            _data.inventory.Add(pair.Key.itemID, pair.Value.stackSize);
+        }
+
+        // save stash data
+        foreach(KeyValuePair<ItemData, InventoryItem> pair in stashDictianory)
+        {
+            _data.inventory.Add(pair.Key.itemID, pair.Value.stackSize);
+        }
+
+        // save equipment data
+        foreach (KeyValuePair<ItemData_Equipment, InventoryItem> pair in equipmentDictionary)
+        {
+            _data.equipmentId.Add(pair.Key.itemID);
+        }
+    }
+
+    private List<ItemData> GetItemDatabase()
+    {
+        List<ItemData> itemDatabase = new List<ItemData>();
+        string[] assetNames = AssetDatabase.FindAssets("", new[] { "Assets/Data/Items" });
+
+        foreach(string SOName in assetNames)
+        {
+            var SOpath = AssetDatabase.GUIDToAssetPath(SOName);
+            var itemData = AssetDatabase.LoadAssetAtPath<ItemData>(SOpath);
+            Debug.Log("Items Loaded");
+
+            itemDatabase.Add(itemData);
+        }
+
+        return itemDatabase;
     }
 }
