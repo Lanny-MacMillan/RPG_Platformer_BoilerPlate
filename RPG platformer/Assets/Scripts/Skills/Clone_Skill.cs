@@ -48,6 +48,15 @@ public class Clone_Skill : Skill
 
     #region Unlock Abilities
 
+    // if talent is unlocked in save game file this function will unlock talents
+    protected override void CheckUnlock()
+    {
+        UnlockCloneAttack();
+        UnlockAggressiveClone();
+        UnlockMultiClone();
+        UnlockCrystalInstead();
+    }
+
     private void UnlockCloneAttack()
     {
         if (cloneAttackUnlockButton.unlocked)

@@ -39,6 +39,13 @@ public class Dash_Skill : Skill
         cloneOnArrivalUnlockedButton.GetComponent<Button>().onClick.AddListener(UnlockCloneOnArrival); 
     }
 
+    // if talent is unlocked in save game file this function will unlock talents
+    protected override void CheckUnlock()
+    {
+        UnlockDash();
+        UnlockCloneDash();
+        UnlockCloneOnArrival();
+    }
 
     private void UnlockDash()
     {
