@@ -182,8 +182,6 @@ public class Inventory : MonoBehaviour
             InventoryItem newItem = new InventoryItem(_item);
             stash.Add(newItem);
             stashDictianory.Add(_item, newItem);
-            Debug.Log("ADD " + newItem);
-
         }
     }
 
