@@ -31257,6 +31257,7 @@ MonoBehaviour:
   stashSlotParent: {fileID: 1305991360}
   equpmentSlotParent: {fileID: 586833452}
   statSlotParent: {fileID: 878142669}
+  loadedItems: []
 --- !u!4 &1447729553
 Transform:
   m_ObjectHideFlags: 0
