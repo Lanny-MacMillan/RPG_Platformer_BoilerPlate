@@ -27,6 +27,8 @@ public class SaveManager : MonoBehaviour
     private void Start()
     {
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        Debug.Log("persistentDataPath" + Application.persistentDataPath);
+
         saveManagers = FindAllSaveManagers();
 
         LoadGame();    
